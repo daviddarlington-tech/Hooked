@@ -324,6 +324,24 @@ window.addEventListener('DOMContentLoaded', () => {
   // Theme toggle
   // Dark mode removed
 
+  // Mobile Nav Toggle
+  const navToggle = $('.nav-toggle');
+  const siteHeader = $('.site-header');
+  if (navToggle && siteHeader) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteHeader.classList.toggle('nav-open');
+      const icon = navToggle.querySelector('i');
+      if (icon) icon.className = isOpen ? 'ri-close-line' : 'ri-menu-line';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    $$('.nav-link').forEach(l => l.addEventListener('click', () => {
+      siteHeader.classList.remove('nav-open');
+      const icon = navToggle.querySelector('i');
+      if (icon) icon.className = 'ri-menu-line';
+      document.body.style.overflow = '';
+    }));
+  }
+
   // Centralize Hero Text
   const heroSection = $('.hero');
   if (heroSection) {

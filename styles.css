@@ -385,9 +385,27 @@ body.loading {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .site-header { grid-template-columns: 1fr auto; padding: 16px 20px; }
-  .main-nav, .search-box { display: none; }
-  .nav-toggle { display: block; }
+  .site-header { grid-template-columns: 1fr auto auto; padding: 16px 20px; }
+  .search-box { display: none; }
+  .nav-toggle { display: block; z-index: 60; position: relative; }
+  .logo { z-index: 60; position: relative; }
+
+  .main-nav {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: var(--off-white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 40;
+  }
+  .site-header.nav-open .main-nav { transform: translateX(0); }
+  .nav-link { font-size: 2rem; }
+
   .utility-bar { display: none; } /* Hide utility bar on mobile to save space */
   
   .hero-inner { grid-template-columns: 1fr; }
