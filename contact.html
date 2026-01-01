@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hooked — Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="blob-cursor.css" />
+    <link rel="icon" href="title icon.png" type="image/png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="blob-cursor.js" defer></script>
+    <script src="click-spark.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <!-- ===== PROMO BAR ===== -->
+    <div class="promo-bar">
+      <div class="promo-track">
+        <span>Welcome to Hooked; home of the Crochet Clique 🌸</span>
+        <span>Worldwide Shipping Available</span>
+        <span>New Drop Every Friday</span>
+      </div>
+      <button class="promo-close" onclick="this.parentElement.style.display='none'">✕</button>
+    </div>
+
+    <header class="site-header">
+      <a href="index.html" class="logo" id="logoText">Hooked.</a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <div class="search-box" style="opacity:0; pointer-events:none;">
+        <!-- Spacer to maintain grid layout -->
+      </div>
+      <div class="header-icons">
+        <i class="ri-user-line"></i>
+        <div class="cart-wrap" id="cartButton">
+          <i class="ri-shopping-cart-line"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </div>
+      </div>
+      <button class="nav-toggle"><i class="ri-menu-line"></i></button>
+    </header>
+
+    <main class="contact" data-animate="fade-up">
+      <div class="container contact-inner">
+        <h1 class="section-title">Get in Touch</h1>
+        <div class="contact-info">
+          <p>You can reach out via the form below or call us directly.</p>
+          <p><strong>Phone:</strong> <a href="tel:+2348036865617">+234 803 686 5617</a></p>
+        </div>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <p id="contactStatus" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </main>
+
+    <!-- Studio Vibes Spacer -->
+    <section class="container moodboard" style="padding-top: 0;">
+      <img src="https://placehold.co/600x600/FAF9F6/111?text=Our+Studio" alt="Studio space" data-animate="fade-up" />
+      <img src="https://placehold.co/600x600/EEEEEE/111?text=Process" alt="Making process" data-animate="fade-up" />
+      <img src="https://placehold.co/600x600/FAF9F6/111?text=Materials" alt="Yarn materials" data-animate="fade-up" />
+    </section>
+
+    <!-- Cart Drawer -->
+    <aside id="cartDrawer" class="cart-drawer" aria-hidden="true" aria-label="Shopping cart">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button id="closeCart" class="icon-button" aria-label="Close cart">✕</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="totals">
+          <div class="total-row"><span>Subtotal</span><span id="subtotal">₦0.00</span></div>
+          <div class="total-row"><span>Shipping</span><span id="shipping">₦0.00</span></div>
+          <div class="total-row grand"><span>Total</span><span id="grandTotal">₦0.00</span></div>
+        </div>
+        <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+      </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" id="closeCheckout" tabindex="-1" aria-label="Close"></div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-header">
+          <h3>Checkout</h3>
+          <button id="closeCheckoutBtn" class="icon-button" aria-label="Close">✕</button>
+        </div>
+        <form id="checkoutForm" class="modal-body" novalidate>
+          <div class="form-row">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" required />
+          </div>
+          <div class="form-row">
+            <label for="checkoutEmail">Email</label>
+            <input id="checkoutEmail" name="checkoutEmail" type="email" required />
+          </div>
+          <div class="form-row">
+            <label for="address">Shipping Address</label>
+            <input id="address" name="address" type="text" required />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required />
+          </div>
+          <button class="btn btn-primary" type="submit">Place Order</button>
+          <p id="checkoutStatus" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem;">Hooked.</strong>
+          <p>Handmade crochet accessories. Off-white & baby pink aesthetic with timeless black accents.</p>
+        </div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div class="footer-copy">© <span id="year"></span> Hooked. All rights reserved.</div>
+      </div>
+    </footer>
+  </body>
+  </html>
